@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meu_banco/database/app_database.dart';
-import 'package:meu_banco/models/contato.dart';
 import 'package:meu_banco/screens/dashboard/dashboard.dart';
 
 void main() async {

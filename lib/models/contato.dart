@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class Contato {
   final int id;
   final String nome;

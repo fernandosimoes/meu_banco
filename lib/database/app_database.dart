@@ -1,5 +1,4 @@
 import 'package:meu_banco/database/dao/contato.dart';
-import 'package:meu_banco/models/contato.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
