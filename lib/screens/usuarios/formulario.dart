@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meu_banco/database/app_database.dart';
+import 'package:meu_banco/database/dao/contato.dart';
 import 'package:meu_banco/models/contato.dart';
 
 class ContactForm extends StatefulWidget {
@@ -11,7 +12,7 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   final TextEditingController _nome = TextEditingController();
   final TextEditingController _conta = TextEditingController();
-
+  final ContatoDao _contatoDao = ContatoDao();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +48,7 @@ class _ContactFormState extends State<ContactForm> {
                   onPressed: () async {
                     if (_nome != null && _conta != null) {
                       final Contato contato = Contato(nome: _nome.text, conta: int.tryParse(_conta.text));
-                      final int id = await save(contato);
+                      final int id = await _contatoDao.save(contato);
                       if (id != null) {
                         Navigator.pop(context);
                       }

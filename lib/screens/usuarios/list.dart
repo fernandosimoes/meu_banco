@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meu_banco/database/app_database.dart';
+import 'package:meu_banco/database/dao/contato.dart';
 import 'package:meu_banco/models/contato.dart';
 import 'package:meu_banco/screens/usuarios/formulario.dart';
 
@@ -11,6 +11,9 @@ class ListContatos extends StatefulWidget {
 }
 
 class _ListContatosState extends State<ListContatos> {
+
+  final ContatoDao _contatoDao = ContatoDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,7 @@ class _ListContatosState extends State<ListContatos> {
           },
         ),
         body: FutureBuilder<List<Contato>>(
-          future: findAll(),
+          future: _contatoDao.findAll(),
           initialData: List<Contato>(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
@@ -63,6 +66,8 @@ class _ListContatosState extends State<ListContatos> {
                   },
                   scrollDirection: Axis.vertical,
                 );
+                break;
+              case ConnectionState.none:
                 break;
             }
             return Center(
