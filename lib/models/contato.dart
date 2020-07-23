@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 
-class Usuario {
-  final String _nome;
-  final int _conta;
-  Usuario(this._nome, this._conta);
+class Contato {
+  final int id;
+  final String nome;
+  final int conta;
 
+  Contato({
+    this.id,
+    this.nome,
+    this.conta,
+  });
 
   @override
   String toString() {
     // TODO: implement toString
-    return 'Novo usuario $_nome e conta $_conta';
+    return 'Novo contato $nome e conta $conta';
   }
-
 }

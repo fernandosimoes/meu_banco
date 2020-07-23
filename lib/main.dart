@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meu_banco/database/app_database.dart';
+import 'package:meu_banco/models/contato.dart';
 import 'package:meu_banco/screens/dashboard/dashboard.dart';
-import 'package:meu_banco/screens/transferencias/lista.dart';
 
-void main() {
+void main() async {
   runApp(MyBank());
 }
 
@@ -11,6 +12,8 @@ class MyBank extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Colors.green[900],

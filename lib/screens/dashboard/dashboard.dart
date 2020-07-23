@@ -39,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ListUsuarios()));
+                            builder: (context) => ListContatos()));
                       },
                       child: Container(
                         width: 180,
@@ -83,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Icon(
-                              Icons.people,
+                              Icons.attach_money,
                               size: 24,
                               color: Colors.white,
                             ),

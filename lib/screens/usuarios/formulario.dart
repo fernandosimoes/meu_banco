@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meu_banco/models/usuario.dart';
+import 'package:meu_banco/database/app_database.dart';
+import 'package:meu_banco/models/contato.dart';
 
 class ContactForm extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _ContactFormState extends State<ContactForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Novo Contato'),
+
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -42,13 +44,13 @@ class _ContactFormState extends State<ContactForm> {
                 width: double.maxFinite,
                 child: RaisedButton(
                   child: Text('Cadastrar'),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_nome != null && _conta != null) {
-                      final Usuario usuario = Usuario(
-                        _nome.text,
-                        int.parse(_conta.text)
-                      );
-                      Navigator.pop(context, usuario);
+                      final Contato contato = Contato(nome: _nome.text, conta: int.tryParse(_conta.text));
+                      final int id = await save(contato);
+                      if (id != null) {
+                        Navigator.pop(context);
+                      }
                     }
                   },
                 ),
