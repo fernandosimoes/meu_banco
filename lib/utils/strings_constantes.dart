@@ -1,0 +1,1 @@
+const emptyList = 'Lista Vazia';
