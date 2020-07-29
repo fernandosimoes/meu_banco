@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meu_banco/screens/transferencias/lista.dart';
+import 'package:meu_banco/screens/transferencias/transferencias_feed.dart';
 import 'package:meu_banco/screens/usuarios/list.dart';
 
 class Dashboard extends StatefulWidget {
@@ -33,18 +34,18 @@ class _DashboardState extends State<Dashboard> {
             child: Row(
               children: <Widget>[
                 _menuItem(
-                    'Contatos',
-                    Icons.contacts,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ListContatos()));
-                    },
+                  'Contatos',
+                  Icons.contacts,
+                  onTap: () {
+                    _showContatctList(context);
+                  },
                 ),
                 _menuItem(
-                  'Transferencias Realizadas', Icons.attach_money,
+                  'Transferencias feed',
+                  Icons.attach_money,
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ListaTransferencias()));
+                        builder: (context) => TransferenciasFeed()));
                   },
                 ),
 //                _menuItem(
@@ -61,13 +62,19 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+
+  void _showContatctList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => ListContatos()),
+    );
+  }
 }
 
 class _menuItem extends StatelessWidget {
-
   final String menuName;
   final IconData menuIcon;
   final Function onTap;
+
   _menuItem(this.menuName, this.menuIcon, {@required this.onTap});
 
   @override
@@ -79,7 +86,6 @@ class _menuItem extends StatelessWidget {
         child: InkWell(
           onTap: () {
             this.onTap();
-
           },
           child: Container(
             width: 180,
