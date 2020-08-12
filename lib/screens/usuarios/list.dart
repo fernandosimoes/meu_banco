@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:meu_banco/components/empty_state.dart';
+import 'package:meu_banco/components/loading_component.dart';
 import 'package:meu_banco/database/dao/contato.dart';
 import 'package:meu_banco/models/contato.dart';
 import 'package:meu_banco/screens/usuarios/formulario.dart';
@@ -35,15 +37,7 @@ class _ListContatosState extends State<ListContatos> {
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      CircularProgressIndicator(),
-                    ],
-                  ),
-                );
+                return LoadingComponent();
                 break;
               case ConnectionState.active:
                 break;
@@ -70,12 +64,7 @@ class _ListContatosState extends State<ListContatos> {
               case ConnectionState.none:
                 break;
             }
-            return Center(
-              child: Text(
-                'deu ruim ^.^"',
-                style: TextStyle(fontSize: 36),
-              ),
-            );
+            return EmptyState();
           },
         ));
   }

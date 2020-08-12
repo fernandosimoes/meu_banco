@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:meu_banco/screens/transferencias/lista.dart';
 import 'package:meu_banco/screens/transferencias/transferencias_feed.dart';
 import 'package:meu_banco/screens/usuarios/list.dart';
+import 'package:meu_banco/http/webclient.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
+    findAllTransactions().then((value) => print(value));
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
